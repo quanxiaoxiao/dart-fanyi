@@ -29,7 +29,7 @@ Future<void> main(List<String> arguments) async {
     );
     if (response.statusCode == 200) {
       final decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-      final list = decodedResponse['basic']['explains'] as List;
+      final list = (decodedResponse['basic']?['explains'] ?? []) as List;
       final line = '#' * 60;
       if (list.isNotEmpty) {
         stdout.writeln(line);
